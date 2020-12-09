@@ -7,7 +7,7 @@ interface SoundButtonProps {
     soundSrc: string;
 }
 const SoundButton: React.FC<SoundButtonProps> = ({ imgSrc, soundSrc }) => {
-    return <img src={`/img/${imgSrc}`} alt={imgSrc} onClick={() => playSound(soundSrc)} className="sound-button" />;
+    return <img src={`/img/${imgSrc}`} alt={imgSrc} onClick={() => playSound(soundSrc)} className="col sound-button" />;
 };
 
 export default SoundButton;
