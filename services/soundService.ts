@@ -1,5 +1,8 @@
 export const playSound = (filename: string): Promise<void> => {
-    const src = `/sounds/${filename}`;
-    const audio = new Audio(src);
-    return audio.play();
+    return new Promise<void>((resolve) => {
+        const src = `/sounds/${filename}`;
+        const audio = new Audio(src);
+        audio.addEventListener("ended", () => resolve());
+        audio.play();
+    });
 };

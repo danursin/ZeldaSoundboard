@@ -1,13 +1,28 @@
-import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+
 import { playSound } from "../services/soundService";
 
-interface SoundButtonProps {
+export interface SoundButtonProps {
     imgSrc: string;
-    soundSrc: string;
+    soundSrc?: string;
+    clickHandler?: (count: number) => Promise<void>;
 }
-const SoundButton: React.FC<SoundButtonProps> = ({ imgSrc, soundSrc }) => {
-    return <img src={`/img/${imgSrc}`} alt={imgSrc} onClick={() => playSound(soundSrc)} className="col sound-button" />;
+const SoundButton: React.FC<SoundButtonProps> = ({ imgSrc, soundSrc, clickHandler }) => {
+    const [count, setCount] = useState<number>(0);
+
+    const handleClick = async () => {
+        const newCount = count + 1;
+        setCount(newCount);
+
+        if (soundSrc) {
+            return playSound(soundSrc);
+        }
+        if (clickHandler) {
+            return clickHandler(newCount);
+        }
+    };
+
+    return <img src={`/img/${imgSrc}`} alt={imgSrc} onClick={() => handleClick()} />;
 };
 
 export default SoundButton;
