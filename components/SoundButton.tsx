@@ -9,22 +9,25 @@ export interface SoundButtonProps {
 }
 const SoundButton: React.FC<SoundButtonProps> = ({ imgSrc, soundSrc, clickHandler }) => {
     const [count, setCount] = useState<number>(0);
+    const [disabled, setDisabled] = useState<boolean>(false);
 
     const handleClick = async () => {
         const newCount = count + 1;
         setCount(newCount);
 
+        setDisabled(true);
         if (soundSrc) {
-            return playSound(soundSrc);
+            await playSound(soundSrc);
         }
         if (clickHandler) {
-            return clickHandler(newCount);
+            await clickHandler(newCount);
         }
+        setDisabled(false);
     };
 
     return (
-        <button type="button" className="btn btn-outline-secondary w-100 h-100">
-            <img src={`/img/${imgSrc}`} alt={imgSrc} onClick={() => handleClick()} className="w-100" />
+        <button type="button" className="btn btn-outline-secondary w-100 h-100" disabled={disabled} onClick={() => handleClick()}>
+            <img src={`/img/${imgSrc}`} alt={imgSrc} className="w-100" />
         </button>
     );
 };
