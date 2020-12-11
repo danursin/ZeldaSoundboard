@@ -95,7 +95,7 @@ const Home: React.FC = () => {
             <img src="/img/zeldaTopLogo.png" alt="Zelda Logo" className="w-100 px-3 py-2" />
             <hr className="mt-1" />
 
-            <div className="row">
+            <div className="row mb-5">
                 {sounds.map((sound) => (
                     <div className="col-4 px-1 pt-2" key={sound.imgSrc}>
                         <SoundButton {...sound} />
