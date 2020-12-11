@@ -97,7 +97,7 @@ const Home: React.FC = () => {
 
             <div className="row">
                 {sounds.map((sound) => (
-                    <div className="col-4 px-1" key={sound.imgSrc}>
+                    <div className="col-4 px-1 pt-2" key={sound.imgSrc}>
                         <SoundButton {...sound} />
                     </div>
                 ))}
