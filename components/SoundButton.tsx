@@ -22,7 +22,11 @@ const SoundButton: React.FC<SoundButtonProps> = ({ imgSrc, soundSrc, clickHandle
         }
     };
 
-    return <img src={`/img/${imgSrc}`} alt={imgSrc} onClick={() => handleClick()} />;
+    return (
+        <button type="button" className="btn btn-light w-100">
+            <img src={`/img/${imgSrc}`} alt={imgSrc} onClick={() => handleClick()} />
+        </button>
+    );
 };
 
 export default SoundButton;

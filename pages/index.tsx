@@ -92,10 +92,11 @@ const Home: React.FC = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <img src="/img/zeldaTopLogo.png" alt="Zelda Logo" style={{ width: "100%", padding: "15px 5px" }} />
-            <div className="row">
+            <img src="/img/zeldaTopLogo.png" alt="Zelda Logo" className="w-100 px-3 py-2" />
+            <hr className="mt-1" />
+            <div className="row d-flex align-items-center text-center">
                 {sounds.map((sound) => (
-                    <div className="col-4 align-middle text-center sound-button" key={sound.imgSrc}>
+                    <div className="col-4 px-1" key={sound.imgSrc}>
                         <SoundButton {...sound} />
                     </div>
                 ))}
