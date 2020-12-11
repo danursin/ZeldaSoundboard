@@ -1,3 +1,5 @@
+$secondary: #ddd;
+
 // Configuration
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
@@ -12,8 +14,3 @@
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/buttons";
 
-.row {
-    img {
-        width: 100%;
-    }
-}
