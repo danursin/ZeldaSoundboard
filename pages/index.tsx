@@ -2,8 +2,9 @@ import SoundButton, { SoundButtonProps } from "../components/SoundButton";
 
 import Head from "next/head";
 import { playSound } from "../services/soundService";
+import { useState } from "react";
 
-const sounds: SoundButtonProps[] = [
+const sounds: Omit<SoundButtonProps, "triggerHappyMode">[] = [
     {
         imgSrc: "attackPic.png",
         clickHandler: () => {
@@ -85,6 +86,8 @@ const sounds: SoundButtonProps[] = [
 ];
 
 const Home: React.FC = () => {
+    const [triggerHappyMode, setTriggerHappyMode] = useState<boolean>(false);
+
     return (
         <div className="container">
             <Head>
@@ -98,9 +101,20 @@ const Home: React.FC = () => {
             <div className="row mb-5">
                 {sounds.map((sound) => (
                     <div className="col-4 px-1 pt-2" key={sound.imgSrc}>
-                        <SoundButton {...sound} />
+                        <SoundButton {...sound} triggerHappyMode={triggerHappyMode} />
                     </div>
                 ))}
+            </div>
+
+            <div className="mb-5">
+                <button
+                    type="button"
+                    className={`btn ${triggerHappyMode ? "btn-primary" : "btn-outline-primary"} btn-sm btn-block`}
+                    onClick={() => setTriggerHappyMode(!triggerHappyMode)}
+                >
+                    {triggerHappyMode ? "Disable" : "Enable"} Trigger-Happy Mode
+                </button>
+                <em className="text-muted text-center d-block">In trigger-happy mode, you can play sounds on top of each other</em>
             </div>
         </div>
     );
