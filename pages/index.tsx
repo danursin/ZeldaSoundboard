@@ -93,6 +93,7 @@ const Home: React.FC = () => {
             <Head>
                 <title>Zelda Soundboard</title>
                 <link rel="icon" href="/favicon.ico" />
+                <link rel="apple-touch-icon" sizes="128x128" href="img/triforce.png"></link>
             </Head>
 
             <img src="/img/zeldaTopLogo.png" alt="Zelda Logo" className="w-100 px-3 py-2" />
